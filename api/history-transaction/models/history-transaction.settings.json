@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "history_transactions",
+  "info": {
+    "name": "History Transaction"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "transaction": {
+      "via": "history_transactions",
+      "model": "transaction"
+    },
+    "users_id": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "history_transactions"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

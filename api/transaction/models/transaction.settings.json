@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "name": "Transaction",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "price": {
+      "type": "string",
+      "maxLength": 13,
+      "minLength": 1,
+      "required": true,
+      "regex": "^[0-9]+$"
+    },
+    "description": {
+      "type": "text"
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "type": {
+      "type": "boolean",
+      "required": true
+    },
+    "category": {
+      "model": "category",
+      "via": "transactions"
+    },
+    "is_deleted": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "users_id": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "transactions"
+    },
+    "history_transactions": {
+      "collection": "history-transaction",
+      "via": "transaction"
+    },
+    "booth": {
+      "model": "booth",
+      "via": "transactions"
+    }
+  }
+}
